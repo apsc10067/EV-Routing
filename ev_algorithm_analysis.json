@@ -1,0 +1,425 @@
+{
+  "analysis_date": "2025-10-15",
+  "total_algorithms": 5,
+  "algorithms": {
+    "Dijkstra": {
+      "cost_efficiency": 15.2,
+      "energy_efficiency": 5.02,
+      "execution_time": 0.1,
+      "reliability": 98.5,
+      "scalability": 85,
+      "overall_rating": 89.0,
+      "color_code": "🔵"
+    },
+    "Genetic Algorithm": {
+      "cost_efficiency": 14.8,
+      "energy_efficiency": 4.85,
+      "execution_time": 2.3,
+      "reliability": 87.2,
+      "scalability": 92,
+      "overall_rating": 77.6,
+      "color_code": "🟣"
+    },
+    "Ant Colony": {
+      "cost_efficiency": 12.4,
+      "energy_efficiency": 4.96,
+      "execution_time": 1.8,
+      "reliability": 91.8,
+      "scalability": 88,
+      "overall_rating": 91.2,
+      "color_code": "🟠"
+    },
+    "Simulated Annealing": {
+      "cost_efficiency": 16.1,
+      "energy_efficiency": 4.72,
+      "execution_time": 1.5,
+      "reliability": 84.3,
+      "scalability": 78,
+      "overall_rating": 75.8,
+      "color_code": "🔴"
+    },
+    "Deep RL Agent": {
+      "cost_efficiency": 14.2,
+      "energy_efficiency": 4.89,
+      "execution_time": 3.2,
+      "reliability": 89.1,
+      "scalability": 95,
+      "overall_rating": 77.0,
+      "color_code": "🟣"
+    }
+  },
+  "rankings": {
+    "overall": [
+      [
+        "Ant Colony",
+        {
+          "cost_efficiency": 12.4,
+          "energy_efficiency": 4.96,
+          "execution_time": 1.8,
+          "reliability": 91.8,
+          "scalability": 88,
+          "overall_rating": 91.2,
+          "color_code": "🟠"
+        }
+      ],
+      [
+        "Dijkstra",
+        {
+          "cost_efficiency": 15.2,
+          "energy_efficiency": 5.02,
+          "execution_time": 0.1,
+          "reliability": 98.5,
+          "scalability": 85,
+          "overall_rating": 89.0,
+          "color_code": "🔵"
+        }
+      ],
+      [
+        "Genetic Algorithm",
+        {
+          "cost_efficiency": 14.8,
+          "energy_efficiency": 4.85,
+          "execution_time": 2.3,
+          "reliability": 87.2,
+          "scalability": 92,
+          "overall_rating": 77.6,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Deep RL Agent",
+        {
+          "cost_efficiency": 14.2,
+          "energy_efficiency": 4.89,
+          "execution_time": 3.2,
+          "reliability": 89.1,
+          "scalability": 95,
+          "overall_rating": 77.0,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Simulated Annealing",
+        {
+          "cost_efficiency": 16.1,
+          "energy_efficiency": 4.72,
+          "execution_time": 1.5,
+          "reliability": 84.3,
+          "scalability": 78,
+          "overall_rating": 75.8,
+          "color_code": "🔴"
+        }
+      ]
+    ],
+    "cost_efficiency": [
+      [
+        "Ant Colony",
+        {
+          "cost_efficiency": 12.4,
+          "energy_efficiency": 4.96,
+          "execution_time": 1.8,
+          "reliability": 91.8,
+          "scalability": 88,
+          "overall_rating": 91.2,
+          "color_code": "🟠"
+        }
+      ],
+      [
+        "Deep RL Agent",
+        {
+          "cost_efficiency": 14.2,
+          "energy_efficiency": 4.89,
+          "execution_time": 3.2,
+          "reliability": 89.1,
+          "scalability": 95,
+          "overall_rating": 77.0,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Genetic Algorithm",
+        {
+          "cost_efficiency": 14.8,
+          "energy_efficiency": 4.85,
+          "execution_time": 2.3,
+          "reliability": 87.2,
+          "scalability": 92,
+          "overall_rating": 77.6,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Dijkstra",
+        {
+          "cost_efficiency": 15.2,
+          "energy_efficiency": 5.02,
+          "execution_time": 0.1,
+          "reliability": 98.5,
+          "scalability": 85,
+          "overall_rating": 89.0,
+          "color_code": "🔵"
+        }
+      ],
+      [
+        "Simulated Annealing",
+        {
+          "cost_efficiency": 16.1,
+          "energy_efficiency": 4.72,
+          "execution_time": 1.5,
+          "reliability": 84.3,
+          "scalability": 78,
+          "overall_rating": 75.8,
+          "color_code": "🔴"
+        }
+      ]
+    ],
+    "energy_efficiency": [
+      [
+        "Dijkstra",
+        {
+          "cost_efficiency": 15.2,
+          "energy_efficiency": 5.02,
+          "execution_time": 0.1,
+          "reliability": 98.5,
+          "scalability": 85,
+          "overall_rating": 89.0,
+          "color_code": "🔵"
+        }
+      ],
+      [
+        "Ant Colony",
+        {
+          "cost_efficiency": 12.4,
+          "energy_efficiency": 4.96,
+          "execution_time": 1.8,
+          "reliability": 91.8,
+          "scalability": 88,
+          "overall_rating": 91.2,
+          "color_code": "🟠"
+        }
+      ],
+      [
+        "Deep RL Agent",
+        {
+          "cost_efficiency": 14.2,
+          "energy_efficiency": 4.89,
+          "execution_time": 3.2,
+          "reliability": 89.1,
+          "scalability": 95,
+          "overall_rating": 77.0,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Genetic Algorithm",
+        {
+          "cost_efficiency": 14.8,
+          "energy_efficiency": 4.85,
+          "execution_time": 2.3,
+          "reliability": 87.2,
+          "scalability": 92,
+          "overall_rating": 77.6,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Simulated Annealing",
+        {
+          "cost_efficiency": 16.1,
+          "energy_efficiency": 4.72,
+          "execution_time": 1.5,
+          "reliability": 84.3,
+          "scalability": 78,
+          "overall_rating": 75.8,
+          "color_code": "🔴"
+        }
+      ]
+    ],
+    "speed": [
+      [
+        "Dijkstra",
+        {
+          "cost_efficiency": 15.2,
+          "energy_efficiency": 5.02,
+          "execution_time": 0.1,
+          "reliability": 98.5,
+          "scalability": 85,
+          "overall_rating": 89.0,
+          "color_code": "🔵"
+        }
+      ],
+      [
+        "Simulated Annealing",
+        {
+          "cost_efficiency": 16.1,
+          "energy_efficiency": 4.72,
+          "execution_time": 1.5,
+          "reliability": 84.3,
+          "scalability": 78,
+          "overall_rating": 75.8,
+          "color_code": "🔴"
+        }
+      ],
+      [
+        "Ant Colony",
+        {
+          "cost_efficiency": 12.4,
+          "energy_efficiency": 4.96,
+          "execution_time": 1.8,
+          "reliability": 91.8,
+          "scalability": 88,
+          "overall_rating": 91.2,
+          "color_code": "🟠"
+        }
+      ],
+      [
+        "Genetic Algorithm",
+        {
+          "cost_efficiency": 14.8,
+          "energy_efficiency": 4.85,
+          "execution_time": 2.3,
+          "reliability": 87.2,
+          "scalability": 92,
+          "overall_rating": 77.6,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Deep RL Agent",
+        {
+          "cost_efficiency": 14.2,
+          "energy_efficiency": 4.89,
+          "execution_time": 3.2,
+          "reliability": 89.1,
+          "scalability": 95,
+          "overall_rating": 77.0,
+          "color_code": "🟣"
+        }
+      ]
+    ],
+    "reliability": [
+      [
+        "Dijkstra",
+        {
+          "cost_efficiency": 15.2,
+          "energy_efficiency": 5.02,
+          "execution_time": 0.1,
+          "reliability": 98.5,
+          "scalability": 85,
+          "overall_rating": 89.0,
+          "color_code": "🔵"
+        }
+      ],
+      [
+        "Ant Colony",
+        {
+          "cost_efficiency": 12.4,
+          "energy_efficiency": 4.96,
+          "execution_time": 1.8,
+          "reliability": 91.8,
+          "scalability": 88,
+          "overall_rating": 91.2,
+          "color_code": "🟠"
+        }
+      ],
+      [
+        "Deep RL Agent",
+        {
+          "cost_efficiency": 14.2,
+          "energy_efficiency": 4.89,
+          "execution_time": 3.2,
+          "reliability": 89.1,
+          "scalability": 95,
+          "overall_rating": 77.0,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Genetic Algorithm",
+        {
+          "cost_efficiency": 14.8,
+          "energy_efficiency": 4.85,
+          "execution_time": 2.3,
+          "reliability": 87.2,
+          "scalability": 92,
+          "overall_rating": 77.6,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Simulated Annealing",
+        {
+          "cost_efficiency": 16.1,
+          "energy_efficiency": 4.72,
+          "execution_time": 1.5,
+          "reliability": 84.3,
+          "scalability": 78,
+          "overall_rating": 75.8,
+          "color_code": "🔴"
+        }
+      ]
+    ],
+    "scalability": [
+      [
+        "Deep RL Agent",
+        {
+          "cost_efficiency": 14.2,
+          "energy_efficiency": 4.89,
+          "execution_time": 3.2,
+          "reliability": 89.1,
+          "scalability": 95,
+          "overall_rating": 77.0,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Genetic Algorithm",
+        {
+          "cost_efficiency": 14.8,
+          "energy_efficiency": 4.85,
+          "execution_time": 2.3,
+          "reliability": 87.2,
+          "scalability": 92,
+          "overall_rating": 77.6,
+          "color_code": "🟣"
+        }
+      ],
+      [
+        "Ant Colony",
+        {
+          "cost_efficiency": 12.4,
+          "energy_efficiency": 4.96,
+          "execution_time": 1.8,
+          "reliability": 91.8,
+          "scalability": 88,
+          "overall_rating": 91.2,
+          "color_code": "🟠"
+        }
+      ],
+      [
+        "Dijkstra",
+        {
+          "cost_efficiency": 15.2,
+          "energy_efficiency": 5.02,
+          "execution_time": 0.1,
+          "reliability": 98.5,
+          "scalability": 85,
+          "overall_rating": 89.0,
+          "color_code": "🔵"
+        }
+      ],
+      [
+        "Simulated Annealing",
+        {
+          "cost_efficiency": 16.1,
+          "energy_efficiency": 4.72,
+          "execution_time": 1.5,
+          "reliability": 84.3,
+          "scalability": 78,
+          "overall_rating": 75.8,
+          "color_code": "🔴"
+        }
+      ]
+    ]
+  }
+}
