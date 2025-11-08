@@ -1,600 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EV Optimization Algorithms - Interactive Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card h2 {
-            color: #4a5568;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-        }
-        
-        .bar-chart {
-            margin: 10px 0;
-        }
-        
-        .bar-item {
-            display: flex;
-            align-items: center;
-            margin: 8px 0;
-            padding: 5px 0;
-        }
-        
-        .bar-label {
-            width: 140px;
-            font-size: 0.9em;
-            font-weight: 500;
-        }
-        
-        .bar-container {
-            flex: 1;
-            height: 25px;
-            background: #f7fafc;
-            border-radius: 12px;
-            overflow: hidden;
-            margin: 0 10px;
-            position: relative;
-        }
-        
-        .bar-fill {
-            height: 100%;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 8px;
-            color: white;
-            font-weight: bold;
-            font-size: 0.8em;
-            transition: width 0.8s ease;
-        }
-        
-        .bar-value {
-            min-width: 60px;
-            text-align: right;
-            font-weight: bold;
-            color: #4a5568;
-        }
-        
-        /* Algorithm specific colors */
-        .dijkstra { background: linear-gradient(90deg, #3182ce, #2b77cb); }
-        .genetic { background: linear-gradient(90deg, #805ad5, #7c3aed); }
-        .ant-colony { background: linear-gradient(90deg, #f56500, #ed8936); }
-        .simulated { background: linear-gradient(90deg, #e53e3e, #c53030); }
-        .deep-rl { background: linear-gradient(90deg, #38a169, #2f855a); }
-        
-        .performance-matrix {
-            overflow-x: auto;
-        }
-        
-        .matrix-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9em;
-        }
-        
-        .matrix-table th,
-        .matrix-table td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .matrix-table th {
-            background: #4a5568;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .matrix-table tr:nth-child(even) {
-            background: #f7fafc;
-        }
-        
-        .rank-badge {
-            background: #ffd700;
-            color: #333;
-            padding: 4px 8px;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 0.8em;
-        }
-        
-        .radar-chart {
-            text-align: center;
-            position: relative;
-        }
-        
-        .radar-algorithm {
-            margin: 20px 0;
-            padding: 15px;
-            border-radius: 10px;
-            background: #f8f9fa;
-        }
-        
-        .radar-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .metric-item {
-            text-align: left;
-        }
-        
-        .metric-label {
-            font-size: 0.8em;
-            color: #666;
-            margin-bottom: 3px;
-        }
-        
-        .star-rating {
-            color: #ffd700;
-            font-size: 1.2em;
-        }
-        
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .champion-item {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            background: #f0fff4;
-            border-left: 4px solid #38a169;
-            border-radius: 5px;
-            margin: 5px 0;
-        }
-        
-        .champion-icon {
-            font-size: 1.5em;
-            margin-right: 10px;
-        }
-        
-        .use-case {
-            background: #fff5f5;
-            border-left: 4px solid #e53e3e;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-        
-        .use-case h4 {
-            color: #c53030;
-            margin-bottom: 5px;
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5e5ee71b7497809ca6b7eb26c8fa5c45 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
         
-        .card {
-            animation: slideIn 0.6s ease forwards;
-        }
-        
-        .card:nth-child(2) { animation-delay: 0.1s; }
-        .card:nth-child(3) { animation-delay: 0.2s; }
-        .card:nth-child(4) { animation-delay: 0.3s; }
-        .card:nth-child(5) { animation-delay: 0.4s; }
-        .card:nth-child(6) { animation-delay: 0.5s; }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🚗 EV Eco-Routing Optimization Dashboard 🚗</h1>
-            <p>Interactive Performance Analysis of 5 Optimization Algorithms</p>
-        </div>
-        
-        <div class="grid">
-            <!-- Overall Performance -->
-            <div class="card">
-                <h2>🏆 Overall Performance Ranking</h2>
-                <div class="bar-chart">
-                    <div class="bar-item">
-                        <div class="bar-label">#1 Ant Colony</div>
-                        <div class="bar-container">
-                            <div class="bar-fill ant-colony" style="width: 91.2%;">91.2%</div>
-                        </div>
-                        <div class="bar-value">91.2%</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#2 Dijkstra</div>
-                        <div class="bar-container">
-                            <div class="bar-fill dijkstra" style="width: 89%;">89.0%</div>
-                        </div>
-                        <div class="bar-value">89.0%</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#3 Genetic Algorithm</div>
-                        <div class="bar-container">
-                            <div class="bar-fill genetic" style="width: 77.6%;">77.6%</div>
-                        </div>
-                        <div class="bar-value">77.6%</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#4 Deep RL Agent</div>
-                        <div class="bar-container">
-                            <div class="bar-fill deep-rl" style="width: 77%;">77.0%</div>
-                        </div>
-                        <div class="bar-value">77.0%</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#5 Simulated Annealing</div>
-                        <div class="bar-container">
-                            <div class="bar-fill simulated" style="width: 75.8%;">75.8%</div>
-                        </div>
-                        <div class="bar-value">75.8%</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Cost Efficiency -->
-            <div class="card">
-                <h2>💰 Cost Efficiency (Lower is Better)</h2>
-                <div class="bar-chart">
-                    <div class="bar-item">
-                        <div class="bar-label">#1 Ant Colony</div>
-                        <div class="bar-container">
-                            <div class="bar-fill ant-colony" style="width: 90%;">Best</div>
-                        </div>
-                        <div class="bar-value">$12.4</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#2 Deep RL Agent</div>
-                        <div class="bar-container">
-                            <div class="bar-fill deep-rl" style="width: 70%;">Good</div>
-                        </div>
-                        <div class="bar-value">$14.2</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#3 Genetic Algorithm</div>
-                        <div class="bar-container">
-                            <div class="bar-fill genetic" style="width: 60%;">Fair</div>
-                        </div>
-                        <div class="bar-value">$14.8</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#4 Dijkstra</div>
-                        <div class="bar-container">
-                            <div class="bar-fill dijkstra" style="width: 50%;">Fair</div>
-                        </div>
-                        <div class="bar-value">$15.2</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#5 Simulated Annealing</div>
-                        <div class="bar-container">
-                            <div class="bar-fill simulated" style="width: 30%;">Poor</div>
-                        </div>
-                        <div class="bar-value">$16.1</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Energy Efficiency -->
-            <div class="card">
-                <h2>⚡ Energy Efficiency</h2>
-                <div class="bar-chart">
-                    <div class="bar-item">
-                        <div class="bar-label">#1 Dijkstra</div>
-                        <div class="bar-container">
-                            <div class="bar-fill dijkstra" style="width: 100%;">5.02</div>
-                        </div>
-                        <div class="bar-value">5.02 km/kWh</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#2 Ant Colony</div>
-                        <div class="bar-container">
-                            <div class="bar-fill ant-colony" style="width: 95%;">4.96</div>
-                        </div>
-                        <div class="bar-value">4.96 km/kWh</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#3 Deep RL Agent</div>
-                        <div class="bar-container">
-                            <div class="bar-fill deep-rl" style="width: 85%;">4.89</div>
-                        </div>
-                        <div class="bar-value">4.89 km/kWh</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#4 Genetic Algorithm</div>
-                        <div class="bar-container">
-                            <div class="bar-fill genetic" style="width: 80%;">4.85</div>
-                        </div>
-                        <div class="bar-value">4.85 km/kWh</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#5 Simulated Annealing</div>
-                        <div class="bar-container">
-                            <div class="bar-fill simulated" style="width: 70%;">4.72</div>
-                        </div>
-                        <div class="bar-value">4.72 km/kWh</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Execution Speed -->
-            <div class="card">
-                <h2>🚀 Execution Speed (Lower is Better)</h2>
-                <div class="bar-chart">
-                    <div class="bar-item">
-                        <div class="bar-label">#1 Dijkstra</div>
-                        <div class="bar-container">
-                            <div class="bar-fill dijkstra" style="width: 100%;">Ultra Fast</div>
-                        </div>
-                        <div class="bar-value">0.1s</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#2 Simulated Annealing</div>
-                        <div class="bar-container">
-                            <div class="bar-fill simulated" style="width: 60%;">Fast</div>
-                        </div>
-                        <div class="bar-value">1.5s</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#3 Ant Colony</div>
-                        <div class="bar-container">
-                            <div class="bar-fill ant-colony" style="width: 50%;">Good</div>
-                        </div>
-                        <div class="bar-value">1.8s</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#4 Genetic Algorithm</div>
-                        <div class="bar-container">
-                            <div class="bar-fill genetic" style="width: 40%;">Moderate</div>
-                        </div>
-                        <div class="bar-value">2.3s</div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-label">#5 Deep RL Agent</div>
-                        <div class="bar-container">
-                            <div class="bar-fill deep-rl" style="width: 20%;">Slow</div>
-                        </div>
-                        <div class="bar-value">3.2s</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Performance Matrix -->
-            <div class="card" style="grid-column: 1 / -1;">
-                <h2>📊 Comprehensive Performance Matrix</h2>
-                <div class="performance-matrix">
-                    <table class="matrix-table">
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Algorithm</th>
-                                <th>Overall Rating</th>
-                                <th>Cost ($/trip)</th>
-                                <th>Energy (km/kWh)</th>
-                                <th>Speed (s)</th>
-                                <th>Reliability (%)</th>
-                                <th>Scalability (%)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="rank-badge">#1</span></td>
-                                <td><strong>Ant Colony</strong></td>
-                                <td>91.2%</td>
-                                <td>$12.4</td>
-                                <td>4.96</td>
-                                <td>1.8</td>
-                                <td>91.8%</td>
-                                <td>88%</td>
-                            </tr>
-                            <tr>
-                                <td><span class="rank-badge">#2</span></td>
-                                <td><strong>Dijkstra</strong></td>
-                                <td>89.0%</td>
-                                <td>$15.2</td>
-                                <td>5.02</td>
-                                <td>0.1</td>
-                                <td>98.5%</td>
-                                <td>85%</td>
-                            </tr>
-                            <tr>
-                                <td><span class="rank-badge">#3</span></td>
-                                <td><strong>Genetic Algorithm</strong></td>
-                                <td>77.6%</td>
-                                <td>$14.8</td>
-                                <td>4.85</td>
-                                <td>2.3</td>
-                                <td>87.2%</td>
-                                <td>92%</td>
-                            </tr>
-                            <tr>
-                                <td><span class="rank-badge">#4</span></td>
-                                <td><strong>Deep RL Agent</strong></td>
-                                <td>77.0%</td>
-                                <td>$14.2</td>
-                                <td>4.89</td>
-                                <td>3.2</td>
-                                <td>89.1%</td>
-                                <td>95%</td>
-                            </tr>
-                            <tr>
-                                <td><span class="rank-badge">#5</span></td>
-                                <td><strong>Simulated Annealing</strong></td>
-                                <td>75.8%</td>
-                                <td>$16.1</td>
-                                <td>4.72</td>
-                                <td>1.5</td>
-                                <td>84.3%</td>
-                                <td>78%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Summary Section -->
-        <div class="summary-grid">
-            <div class="card">
-                <h2>🏆 Category Champions</h2>
-                <div class="champion-item">
-                    <div class="champion-icon">🥇</div>
-                    <div>
-                        <strong>Overall Best:</strong><br>
-                        Ant Colony (91.2%)
-                    </div>
-                </div>
-                <div class="champion-item">
-                    <div class="champion-icon">💰</div>
-                    <div>
-                        <strong>Most Cost-Effective:</strong><br>
-                        Ant Colony ($12.4/trip)
-                    </div>
-                </div>
-                <div class="champion-item">
-                    <div class="champion-icon">⚡</div>
-                    <div>
-                        <strong>Most Energy-Efficient:</strong><br>
-                        Dijkstra (5.02 km/kWh)
-                    </div>
-                </div>
-                <div class="champion-item">
-                    <div class="champion-icon">🚀</div>
-                    <div>
-                        <strong>Fastest Execution:</strong><br>
-                        Dijkstra (0.1s)
-                    </div>
-                </div>
-                <div class="champion-item">
-                    <div class="champion-icon">🛡️</div>
-                    <div>
-                        <strong>Most Reliable:</strong><br>
-                        Dijkstra (98.5%)
-                    </div>
-                </div>
-                <div class="champion-item">
-                    <div class="champion-icon">📈</div>
-                    <div>
-                        <strong>Most Scalable:</strong><br>
-                        Deep RL Agent (95%)
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h2>📋 Use Case Recommendations</h2>
-                
-                <div class="use-case">
-                    <h4>🚖 Taxi/Ride-sharing Services</h4>
-                    <p><strong>Ant Colony:</strong> Best cost efficiency with good reliability for budget-conscious operations.</p>
-                </div>
-                
-                <div class="use-case">
-                    <h4>🚛 Fleet Management</h4>
-                    <p><strong>Dijkstra:</strong> Fast, reliable, and energy-efficient for real-time fleet optimization.</p>
-                </div>
-                
-                <div class="use-case">
-                    <h4>🧪 Research & Development</h4>
-                    <p><strong>Genetic Algorithm:</strong> Flexible and scalable for experimental scenarios.</p>
-                </div>
-                
-                <div class="use-case">
-                    <h4>🏙️ Smart City Applications</h4>
-                    <p><strong>Deep RL Agent:</strong> Adaptive learning with highest scalability for complex urban environments.</p>
-                </div>
-                
-                <div class="use-case">
-                    <h4>⚡ Real-time Navigation</h4>
-                    <p><strong>Dijkstra:</strong> Ultra-fast execution with maximum reliability for instant route calculations.</p>
-                </div>
-            </div>
-        </div>
-    </div>
     
-    <script>
-        // Add some interactivity
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animate bars on page load
-            setTimeout(function() {
-                const bars = document.querySelectorAll('.bar-fill');
-                bars.forEach(bar => {
-                    bar.style.width = bar.style.width; // Trigger animation
-                });
-            }, 500);
-            
-            // Add hover effects to cards
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-        });
-    </script>
+    
+            <div class="folium-map" id="map_5e5ee71b7497809ca6b7eb26c8fa5c45" ></div>
+        
 </body>
+<script>
+    
+    
+            var map_5e5ee71b7497809ca6b7eb26c8fa5c45 = L.map(
+                "map_5e5ee71b7497809ca6b7eb26c8fa5c45",
+                {
+                    center: [37.4365815, -122.14905859999999],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d619137a1d47451f1793066b1adacc1f = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d619137a1d47451f1793066b1adacc1f.addTo(map_5e5ee71b7497809ca6b7eb26c8fa5c45);
+        
+    
+            var marker_1705f21b2089d516bb13113c45d298e2 = L.marker(
+                [37.426155, -122.146065],
+                {
+}
+            ).addTo(map_5e5ee71b7497809ca6b7eb26c8fa5c45);
+        
+    
+            var icon_87e86714b82474df2b11844c28766cc7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a26f7935252fd2979f027c94b3209ec9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a95163bc2c1e38f7a012695cc66b0784 = $(`<div id="html_a95163bc2c1e38f7a012695cc66b0784" style="width: 100.0%; height: 100.0%;">Start Point</div>`)[0];
+                popup_a26f7935252fd2979f027c94b3209ec9.setContent(html_a95163bc2c1e38f7a012695cc66b0784);
+            
+        
+
+        marker_1705f21b2089d516bb13113c45d298e2.bindPopup(popup_a26f7935252fd2979f027c94b3209ec9)
+        ;
+
+        
+    
+    
+                marker_1705f21b2089d516bb13113c45d298e2.setIcon(icon_87e86714b82474df2b11844c28766cc7);
+            
+    
+            var marker_6ec8e61ae6bd96763ae80c9fb78c63e5 = L.marker(
+                [37.444706, -122.160324],
+                {
+}
+            ).addTo(map_5e5ee71b7497809ca6b7eb26c8fa5c45);
+        
+    
+            var icon_669171c924d45458db0b32cdf9e7fce1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_82f2be73a50fe01b31f068b5f63fec5e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ec50de735ae88361bee2701d3ac963bf = $(`<div id="html_ec50de735ae88361bee2701d3ac963bf" style="width: 100.0%; height: 100.0%;">End Point</div>`)[0];
+                popup_82f2be73a50fe01b31f068b5f63fec5e.setContent(html_ec50de735ae88361bee2701d3ac963bf);
+            
+        
+
+        marker_6ec8e61ae6bd96763ae80c9fb78c63e5.bindPopup(popup_82f2be73a50fe01b31f068b5f63fec5e)
+        ;
+
+        
+    
+    
+                marker_6ec8e61ae6bd96763ae80c9fb78c63e5.setIcon(icon_669171c924d45458db0b32cdf9e7fce1);
+            
+</script>
 </html>
